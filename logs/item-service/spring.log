@@ -23,3 +23,9 @@
 19:13:59:444 DEBUG 19796 --- [http-nio-8081-exec-5] c.h.item.mapper.ItemMapper.selectPage    : ==>  Preparing: SELECT id, name, price, stock, image, category, brand, spec, sold, comment_count, isAD, status, create_time, update_time, creater, updater FROM item ORDER BY update_time DESC LIMIT ?
 19:13:59:445 DEBUG 19796 --- [http-nio-8081-exec-5] c.h.item.mapper.ItemMapper.selectPage    : ==> Parameters: 20(Long)
 19:13:59:454 DEBUG 19796 --- [http-nio-8081-exec-5] c.h.item.mapper.ItemMapper.selectPage    : <==      Total: 20
+21:07:36:125 DEBUG 19796 --- [http-nio-8081-exec-9] c.h.i.mapper.ItemMapper.selectBatchIds   : ==>  Preparing: SELECT id,name,price,stock,image,category,brand,spec,sold,comment_count,isAD,status,create_time,update_time,creater,updater FROM item WHERE id IN ( ? )
+21:07:36:134 DEBUG 19796 --- [http-nio-8081-exec-9] c.h.i.mapper.ItemMapper.selectBatchIds   : ==> Parameters: 100000006163(Long)
+21:07:36:144 DEBUG 19796 --- [http-nio-8081-exec-9] c.h.i.mapper.ItemMapper.selectBatchIds   : <==      Total: 1
+21:10:24:508 DEBUG 19796 --- [http-nio-8081-exec-10] c.h.i.mapper.ItemMapper.selectBatchIds   : ==>  Preparing: SELECT id,name,price,stock,image,category,brand,spec,sold,comment_count,isAD,status,create_time,update_time,creater,updater FROM item WHERE id IN ( ? )
+21:10:24:508 DEBUG 19796 --- [http-nio-8081-exec-10] c.h.i.mapper.ItemMapper.selectBatchIds   : ==> Parameters: 100000006163(Long)
+21:10:24:510 DEBUG 19796 --- [http-nio-8081-exec-10] c.h.i.mapper.ItemMapper.selectBatchIds   : <==      Total: 1
