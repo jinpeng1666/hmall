@@ -37,13 +37,6 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class CartServiceImpl extends ServiceImpl<CartMapper, Cart> implements ICartService {
 
-    // todo: ItemService依赖注入
-//    private final IItemService itemService;
-
-    // private final RestTemplate restTemplate;
-
-    // private final DiscoveryClient discoveryClient;
-
     private final ItemClient itemClient;
 
     @Override
