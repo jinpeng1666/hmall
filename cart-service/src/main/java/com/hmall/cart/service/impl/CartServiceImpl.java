@@ -65,8 +65,7 @@ public class CartServiceImpl extends ServiceImpl<CartMapper, Cart> implements IC
     @Override
     public List<CartVO> queryMyCarts() {
         // 1.查询我的购物车列表
-        // todo: 用户id
-        List<Cart> carts = lambdaQuery().eq(Cart::getUserId, 1L/*UserContext.getUser()*/).list();
+        List<Cart> carts = lambdaQuery().eq(Cart::getUserId, UserContext.getUser()).list();
         if (CollUtils.isEmpty(carts)) {
             return CollUtils.emptyList();
         }
@@ -83,37 +82,9 @@ public class CartServiceImpl extends ServiceImpl<CartMapper, Cart> implements IC
 
     private void handleCartItems(List<CartVO> vos) {
         // 1.获取商品id
-        // todo: 获取商品id
         Set<Long> itemIds = vos.stream().map(CartVO::getItemId).collect(Collectors.toSet());
-        /*// 2.查询商品
-        // List<ItemDTO> items = itemService.queryItemByIds(itemIds);
 
-        // 2.1 根据服务名称获取服务的实例列表
-        List<ServiceInstance> instances = discoveryClient.getInstances("item-service");
-        if (CollUtil.isEmpty(instances)) {
-            return;
-        }
-
-        // 2.2 模拟负载均衡，从实例列表中挑选一个实例
-        ServiceInstance instance = instances.get(RandomUtil.randomInt(instances.size()));
-
-        // 2.3.利用RestTemplate发起http请求，得到http的响应
-        ResponseEntity<List<ItemDTO>> response = restTemplate.exchange(
-                instance.getUri() + "/items?ids={ids}",
-                HttpMethod.GET,
-                null,
-                new ParameterizedTypeReference<List<ItemDTO>>() {
-                },
-                Map.of("ids", CollUtil.join(itemIds, ","))
-        );
-
-        // 2.4.解析响应
-        if(!response.getStatusCode().is2xxSuccessful()){
-            // 查询失败，直接结束
-            return;
-        }
-        List<ItemDTO> items = response.getBody();*/
-
+        // 2.查询商品
         List<ItemDTO> items = itemClient.queryItemByIds(itemIds);
 
         if (CollUtils.isEmpty(items)) {
