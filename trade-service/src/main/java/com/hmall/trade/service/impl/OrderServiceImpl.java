@@ -89,6 +89,7 @@ public class OrderServiceImpl extends ServiceImpl<OrderMapper, Order> implements
 
     @Override
     public void markOrderPaySuccess(Long orderId) {
+        System.out.println("123");
         Order order = new Order();
         order.setId(orderId);
         order.setStatus(2);
